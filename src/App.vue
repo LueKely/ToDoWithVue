@@ -1,7 +1,7 @@
 <script setup>
 	import { ref } from 'vue';
 	import { reactive } from 'vue';
-	let test = reactive({ count: 0 });
+	const test = reactive({ count: 0 });
 
 	const foo = ref('bar');
 	function increment() {
