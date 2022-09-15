@@ -7,7 +7,7 @@
 	const foo = ref('bar');
 	function increment() {
 		test.count++;
-		console.log(test.count);
+		console.log(test.count.value);
 	}
 	function log() {
 		isRed.value = !isRed.value;
