@@ -1,31 +1,16 @@
 <script setup>
-	import { ref } from 'vue';
-	import { reactive } from 'vue';
-	const test = reactive({ count: 0 });
-	const isRed = ref(false);
-
-	const foo = ref('bar');
-	function increment() {
-		test.count++;
-		console.log(test.count.value);
-	}
-	function log() {
-		isRed.value = !isRed.value;
-	}
-	function callTheTwo() {
-		increment();
-		log();
-	}
+	import ShoppingList from './components/Shopping-List.vue';
 </script>
 
 <template>
-	<h1 :class="{ red: isRed }">{{ foo }}</h1>
-	<h2>{{ test.count }}</h2>
-	<button @click="callTheTwo()">click me</button>
+	<ShoppingList></ShoppingList>
 </template>
 
 <style scoped>
 	.red {
 		color: red;
+	}
+	body {
+		background-color: aliceblue;
 	}
 </style>
