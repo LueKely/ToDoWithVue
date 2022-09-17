@@ -2,7 +2,12 @@
 	<div>
 		<h1>Shopping for my dick wanker</h1>
 		<ul>
-			<li @click="crossOut(item)" v-for="item in items" :key="item.id">
+			<li
+				:class="{ underline: item.isClicked }"
+				@click="crossOut(item)"
+				v-for="item in items"
+				:key="item.id"
+			>
 				{{ item.name }}
 			</li>
 		</ul>
@@ -23,7 +28,7 @@
 	import { ref } from 'vue';
 	const isImportant = ref(false);
 	const crossOut = (target) => {
-		target.clicked = !target.clicked;
+		target.isClicked = !target.isClicked;
 		console.log(target.isClicked);
 		console.log(target.id);
 	};
@@ -50,6 +55,9 @@
 
 <style scoped>
 	.shopping__items {
+		text-decoration: line-through;
+	}
+	.underline {
 		text-decoration: line-through;
 	}
 </style>
