@@ -2,7 +2,9 @@
 	<div>
 		<h1>Shopping for my dick wanker</h1>
 		<ul>
-			<li v-for="item in items" :key="item.id">{{ item.name }}</li>
+			<li @click="crossOut(item)" v-for="item in items" :key="item.id">
+				{{ item.name }}
+			</li>
 		</ul>
 
 		<input
@@ -20,11 +22,16 @@
 <script setup>
 	import { ref } from 'vue';
 	const isImportant = ref(false);
+	const crossOut = (target) => {
+		target.clicked = !target.clicked;
+		console.log(target.isClicked);
+		console.log(target.id);
+	};
 	const laman = ref('');
 	const items = ref([
-		{ id: 1, name: 'ham', isClicked: true },
-		{ id: 2, name: 'ham', isClicked: true },
-		{ id: 3, name: 'ham', isClicked: true },
+		{ id: 1, name: 'ham', isClicked: false },
+		{ id: 2, name: 'ham', isClicked: false },
+		{ id: 3, name: 'ham', isClicked: false },
 	]);
 
 	const timeToPush = () => {
@@ -34,7 +41,7 @@
 			items.value.push({
 				id: items.value.length,
 				name: laman.value,
-				isClicked: true,
+				isClicked: false,
 			});
 			laman.value = '';
 		}
