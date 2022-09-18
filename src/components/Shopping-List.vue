@@ -12,20 +12,31 @@
 			</li>
 		</ul>
 
-		<input
-			type="text"
-			placeholder="type-something"
-			v-model.lazy="laman"
-			v-on:keyup.enter="timeToPush"
-		/>
-		<input type="checkbox" v-model="isImportant" />
-		<p>is it important? {{ isImportant ? 'yes' : 'no' }}</p>
-		<button @click="timeToPush">send</button>
+		<button @click="create">Create Something</button>
+		<button @click="destroyCreate" v-if="showCreate">Cancel</button>
+		<div v-if="showCreate">
+			<input
+				type="text"
+				placeholder="type-something"
+				v-model.lazy="laman"
+				v-on:keyup.enter="timeToPush"
+			/>
+			<input type="checkbox" v-model="isImportant" />
+			<p>is it important? {{ isImportant ? 'yes' : 'no' }}</p>
+			<button @click="timeToPush">send</button>
+		</div>
 	</div>
 </template>
 
 <script setup>
 	import { ref } from 'vue';
+	const showCreate = ref(false);
+	function create() {
+		showCreate.value = true;
+	}
+	function destroyCreate() {
+		showCreate.value = false;
+	}
 	const isImportant = ref(false);
 	const crossOut = (target) => {
 		target.isClicked = !target.isClicked;
