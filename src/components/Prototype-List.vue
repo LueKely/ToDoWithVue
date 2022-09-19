@@ -1,7 +1,7 @@
 <script setup>
 	import { ref, reactive } from 'vue';
 	const parsedData = localStorage.getItem('1');
-	let userData = reactive(
+	const userData = reactive(
 		localStorage.length == 0 ? [] : JSON.parse(parsedData)
 	);
 	const importantCheck = ref(false);
@@ -23,7 +23,7 @@
 
 	function clearAll() {
 		localStorage.clear();
-		userData = [];
+		userData.splice(0, userData.length);
 	}
 
 	console.log(localStorage);
