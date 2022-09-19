@@ -2,7 +2,9 @@
 	import PrototypeList from './components/Prototype-List.vue';
 </script>
 
-<template><PrototypeList></PrototypeList></template>
+<template>
+	<PrototypeList></PrototypeList>
+</template>
 
 <style scoped>
 	.red {
