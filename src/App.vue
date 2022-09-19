@@ -1,10 +1,8 @@
 <script setup>
-	import ShoppingList from './components/Shopping-List.vue';
+	import PrototypeList from './components/Prototype-List.vue';
 </script>
 
-<template>
-	<ShoppingList></ShoppingList>
-</template>
+<template><PrototypeList></PrototypeList></template>
 
 <style scoped>
 	.red {

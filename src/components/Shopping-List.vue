@@ -23,7 +23,9 @@
 			/>
 			<input type="checkbox" v-model="isImportant" />
 			<p>is it important? {{ isImportant ? 'yes' : 'no' }}</p>
-			<button @click="timeToPush">send</button>
+			<button v-bind:disabled="laman.length === 0" @click="timeToPush">
+				send
+			</button>
 		</div>
 	</div>
 </template>
@@ -44,11 +46,7 @@
 		console.log(target.id);
 	};
 	const laman = ref('');
-	const items = ref([
-		{ id: 1, name: 'ham', isClicked: false },
-		{ id: 2, name: 'ham', isClicked: false },
-		{ id: 3, name: 'ham', isClicked: false },
-	]);
+	const items = ref([]);
 
 	const timeToPush = () => {
 		if (laman.value == '') {
