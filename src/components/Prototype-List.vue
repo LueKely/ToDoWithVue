@@ -44,15 +44,20 @@
 <template>
 	<div class="container">
 		<!-- button to write -->
-		<button id="ShowUi" @click="showUi">
-			Write Something! <font-awesome-icon icon="fa-solid fa-pencil" />
+		<button id="ShowUi" v-show="!isUi" @click="showUi">
+			Write Something <font-awesome-icon icon="fa-solid fa-pencil" />
 		</button>
 
 		<!-- user input -->
 		<div v-show="isUi">
 			<!-- text box -->
 			<div>
-				<input type="text" v-model="userInput" />
+				<input
+					placeholder="What shall you do today..."
+					id="TextBox"
+					type="text"
+					v-model="userInput"
+				/>
 				<label for="important">Mark As Important</label>
 				<input type="checkbox" id="important" v-model="importantCheck" />
 			</div>
@@ -73,6 +78,7 @@
 			<button @click="submitForm">Submit</button>
 			<button @click="doIt">do it</button>
 			<button @click="clearAll">Clear all</button>
+			<button @click="hideUi">Cancel</button>
 		</div>
 	</div>
 
@@ -81,7 +87,9 @@
 		<p>{{ item.tag }}</p>
 		<p :class="{ bold: item.important }">{{ item.note }}</p>
 		<p>{{ index }}</p>
-		<button @click="deleteSelf(index)">Delete Note</button>
+		<button @click="deleteSelf(index)">
+			Delete<font-awesome-icon icon="fa-solid fa-trash" />
+		</button>
 	</div>
 </template>
 
@@ -89,8 +97,8 @@
 	#ShowUi {
 		margin-top: 30px;
 		width: 240px;
-		font-family: var(--Jua);
 		height: 70px;
+		font-family: var(--Jua);
 		background-color: var(--color-1);
 		font-size: 1.5rem;
 		border: 4px solid black;
@@ -120,5 +128,14 @@
 		align-items: center;
 		flex-direction: column;
 		justify-content: center;
+	}
+	#TextBox {
+		margin: 10px;
+		display: block;
+		width: 700px;
+		height: 150px;
+		border: 4px solid black;
+		border-radius: 25px;
+		font-family: var(--Jua);
 	}
 </style>
