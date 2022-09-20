@@ -26,6 +26,11 @@
 		userData.splice(0, userData.length);
 	}
 
+	function deleteSelf(index) {
+		userData.splice(index, 1);
+		localStorage.setItem('1', JSON.stringify(userData));
+	}
+
 	console.log(localStorage);
 </script>
 
@@ -51,6 +56,7 @@
 		<p>{{ item.tag }}</p>
 		<p :class="{ bold: item.important }">{{ item.note }}</p>
 		<p>{{ index }}</p>
+		<button @click="deleteSelf(index)">Delete Note</button>
 	</div>
 </template>
 
