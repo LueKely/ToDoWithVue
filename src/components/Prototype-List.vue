@@ -24,6 +24,8 @@
 			tag: tags.value,
 			important: importantCheck.value,
 		});
+		userInput.value = '';
+		importantCheck.value = false;
 	}
 
 	function doIt() {
@@ -85,7 +87,7 @@
 					<input type="checkbox" id="important" v-model="importantCheck"
 				/></span>
 				<span>
-					<h2>Select Tag:</h2>
+					<h2>Tag:</h2>
 					<select v-model="tags">
 						<option disabled value="">select tag</option>
 						<option>Work</option>
@@ -109,7 +111,19 @@
 		</div>
 	</div>
 	<button @click="clearAll">Clear all</button>
+
 	<!-- list items -->
+
+	<div class="list__container">
+		<h1 class="list--text">Your Notes</h1>
+		<div v-if="userData.length === 0" class="list--empty__container">
+			<div class="list--empty__icon">
+				<font-awesome-icon icon="fa-solid fa-wind" />
+			</div>
+			<p class="list--empty__empty">Empty</p>
+		</div>
+	</div>
+
 	<div v-for="(item, index) in userData" :key="index.id">
 		<p>{{ item.tag }}</p>
 		<p :class="{ bold: item.important }">{{ item.note }}</p>
