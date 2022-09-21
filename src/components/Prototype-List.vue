@@ -110,7 +110,7 @@
 			<!-- submission of form -->
 		</div>
 	</div>
-	<button @click="clearAll">Clear all</button>
+	<button class="btn clearAll" @click="clearAll">Clear all</button>
 
 	<!-- list items -->
 
@@ -232,12 +232,24 @@
 		background-color: rgb(187, 95, 83);
 		scale: 0.9;
 	}
+
+	.btn.clearAll {
+		background-color: rgb(233, 150, 34);
+	}
+	.btn.clearAll:active {
+		background-color: rgb(202, 130, 30);
+		scale: 0.9;
+	}
+	.btn.clearAll:hover {
+		background-color: rgb(202, 130, 30);
+	}
 	.choices__container {
 		display: flex;
 		justify-content: space-between;
 		width: 700px;
 		padding-inline: 20px;
 	}
+
 	h2 {
 		display: inline;
 	}
@@ -276,9 +288,13 @@
 	}
 	/* list container */
 	.list__container {
+		border: 4px solid black;
+		padding: 10px;
 		margin-top: 10px;
 		margin-inline: auto;
 		width: 800px;
+		border-radius: 20px;
+		background-color: var(--color-3);
 	}
 
 	/* list--empty__icon */
@@ -292,7 +308,7 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		color: #6968689b;
+		color: #f5efef71;
 	}
 	.list--empty__icon {
 		font-size: 7rem;
