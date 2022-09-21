@@ -115,22 +115,23 @@
 	<!-- list items -->
 
 	<div class="list__container">
-		<h1 class="list--text">Your Notes</h1>
+		<h1 class="list--text">Your Notes:</h1>
+		<!-- if no list -->
 		<div v-if="userData.length === 0" class="list--empty__container">
 			<div class="list--empty__icon">
 				<font-awesome-icon icon="fa-solid fa-wind" />
 			</div>
 			<p class="list--empty__empty">Empty</p>
 		</div>
-	</div>
-
-	<div v-for="(item, index) in userData" :key="index.id">
-		<p>{{ item.tag }}</p>
-		<p :class="{ bold: item.important }">{{ item.note }}</p>
-		<p>{{ index }}</p>
-		<button @click="deleteSelf(index)">
-			Delete<font-awesome-icon icon="fa-solid fa-trash" />
-		</button>
+		<!-- list items -->
+		<div v-for="(item, index) in userData" :key="index.id">
+			<p>{{ item.tag }}</p>
+			<p :class="{ bold: item.important }">{{ item.note }}</p>
+			<p>{{ index }}</p>
+			<button @click="deleteSelf(index)">
+				Delete<font-awesome-icon icon="fa-solid fa-trash" />
+			</button>
+		</div>
 	</div>
 </template>
 
@@ -272,5 +273,28 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	/* list container */
+	.list__container {
+		margin-top: 10px;
+		margin-inline: auto;
+		width: 800px;
+	}
+
+	/* list--empty__icon */
+	.list--empty__container {
+		margin: auto;
+		user-select: none;
+		width: 500px;
+		height: 500px;
+		font-size: 5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		color: #6968689b;
+	}
+	.list--empty__icon {
+		font-size: 7rem;
 	}
 </style>
