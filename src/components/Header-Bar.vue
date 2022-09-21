@@ -16,14 +16,14 @@
 		height: 150px;
 		margin-inline: auto;
 		margin-top: 20px;
-		border: solid 5px black;
+		border: solid 4px black;
 		border-radius: 30px;
 		background-color: var(--color-1);
 	}
 
 	h1 {
 		margin: 10px 10px 0 10px;
-		font-family: var(--Rubik);
+		font-family: var(--Fredoka);
 		font-size: 3rem;
 	}
 	p {

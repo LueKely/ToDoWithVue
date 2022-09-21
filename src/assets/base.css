@@ -1,5 +1,5 @@
 /* color palette from <https://github.com/vuejs/theme> */
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Jua&display=swap');
 :root {
 	--color-1: #edf8fb;
 	--color-2: #b3cde3;
@@ -8,7 +8,7 @@
 	--color-5: #810f7c;
 
 	--jua: 'Jua', sans-serif;
-	--Rubik: 'Rubik Mono One', sans-serif;
+	--Fredoka: 'Fredoka One', sans-serif;
 }
 
 *,
