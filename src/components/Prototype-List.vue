@@ -110,7 +110,6 @@
 			<!-- submission of form -->
 		</div>
 	</div>
-	<button class="btn clearAll" @click="clearAll">Clear all</button>
 
 	<!-- list items -->
 
@@ -124,193 +123,27 @@
 			<p class="list--empty__empty">Empty</p>
 		</div>
 		<!-- list items -->
-		<div v-for="(item, index) in userData" :key="index.id">
-			<p>{{ item.tag }}</p>
-			<p :class="{ bold: item.important }">{{ item.note }}</p>
-			<p>{{ index }}</p>
-			<button @click="deleteSelf(index)">
-				Delete<font-awesome-icon icon="fa-solid fa-trash" />
-			</button>
+		<div class="list--item__container">
+			<div
+				class="card__container"
+				v-for="(item, index) in userData"
+				:key="index.id"
+			>
+				<div class="card--item__tag">
+					<h1>{{ item.tag }}</h1>
+				</div>
+
+				<p :class="{ bold: item.important }">{{ item.note }}</p>
+
+				<p>{{ index }}</p>
+				<button class="btn card__btn" @click="deleteSelf(index)">
+					Delete <font-awesome-icon icon="fa-solid fa-trash" />
+				</button>
+			</div>
 		</div>
+
+		<button class="btn clearAll" @click="clearAll">Clear all</button>
 	</div>
 </template>
 
-<style scoped>
-	#ShowUi {
-		margin-top: 30px;
-		width: 240px;
-		height: 70px;
-		font-family: var(--Jua);
-		background-color: var(--color-1);
-		font-size: 1.5rem;
-		border: 4px solid black;
-		border-radius: 15px;
-	}
-
-	#ShowUi:hover {
-		background-color: var(--color-2);
-	}
-	#ShowUi:active {
-		scale: 98%;
-	}
-	.red {
-		color: red;
-	}
-
-	.bold {
-		font-weight: bold;
-		color: red;
-	}
-	.container {
-		margin: 20px;
-		width: 60vw;
-
-		margin: auto;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
-	}
-	#TextBox {
-		outline: none;
-		margin: 0px 10px 10px 10px;
-		display: block;
-		border: 4px solid black;
-		border-radius: 25px;
-		font-family: var(--Jua);
-		padding: 10px;
-		resize: none;
-		font-size: 1.5rem;
-	}
-
-	#TextBox:focus {
-		cursor: text;
-		color: #333333;
-		background-color: white;
-		border-color: #333333;
-	}
-	.textArea__container {
-		margin-top: 10px;
-	}
-	.textArea--limit {
-		width: 70px;
-		height: 30px;
-		margin-left: auto;
-		margin-right: 10px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.btn {
-		width: 90px;
-		height: 40px;
-		font-family: var(--Jua);
-		background-color: var(--color-1);
-		font-size: 1.2rem;
-		border: 4px solid black;
-		border-radius: 15px;
-		margin-inline: 5px;
-	}
-	.btn.submit {
-		background-color: rgb(120, 240, 120);
-	}
-	.btn.submit:hover {
-		background-color: rgb(92, 180, 92);
-	}
-	.btn.submit:active {
-		background-color: rgb(92, 180, 92);
-		scale: 0.9;
-	}
-
-	.btn.cancel {
-		background-color: rgb(240, 120, 105);
-	}
-	.btn.cancel:hover {
-		background-color: rgb(187, 95, 83);
-	}
-	.btn.cancel:active {
-		background-color: rgb(187, 95, 83);
-		scale: 0.9;
-	}
-
-	.btn.clearAll {
-		background-color: rgb(233, 150, 34);
-	}
-	.btn.clearAll:active {
-		background-color: rgb(202, 130, 30);
-		scale: 0.9;
-	}
-	.btn.clearAll:hover {
-		background-color: rgb(202, 130, 30);
-	}
-	.choices__container {
-		display: flex;
-		justify-content: space-between;
-		width: 700px;
-		padding-inline: 20px;
-	}
-
-	h2 {
-		display: inline;
-	}
-	select {
-		margin-left: 10px;
-		width: 120px;
-		height: 30px;
-		font-family: var(--Jua);
-		font-size: 1.2em;
-		background-color: var(--color-2);
-		border-radius: 10px;
-		border: 4px solid black;
-	}
-
-	option {
-		font-family: var(--Jua);
-		font-size: 1.2em;
-		background-color: var(--color-2);
-		border-radius: 10px;
-		border: 4px solid black;
-	}
-	#important {
-		width: 25px;
-		height: 25px;
-		margin-left: 10px;
-	}
-	.important__label {
-		font-size: 1.2rem;
-	}
-	.important__container {
-		width: 200px;
-		height: 40px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	/* list container */
-	.list__container {
-		border: 4px solid black;
-		padding: 10px;
-		margin-top: 10px;
-		margin-inline: auto;
-		width: 800px;
-		border-radius: 20px;
-		background-color: var(--color-3);
-	}
-
-	/* list--empty__icon */
-	.list--empty__container {
-		margin: auto;
-		user-select: none;
-		width: 500px;
-		height: 500px;
-		font-size: 5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		color: #f5efef71;
-	}
-	.list--empty__icon {
-		font-size: 7rem;
-	}
-</style>
+<style scoped src="../assets/todostyle.css"></style>
