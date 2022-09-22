@@ -2,6 +2,7 @@
 	import { ref, reactive, watch, computed } from 'vue';
 
 	const parsedData = localStorage.getItem('1');
+
 	const userData = reactive(
 		localStorage.length == 0 ? [] : JSON.parse(parsedData)
 	);
@@ -13,6 +14,7 @@
 	const showChar = computed(() => {
 		return userInput.value.length;
 	});
+
 	watch(userData, () => {
 		doIt();
 		console.log('Data Saved');
@@ -23,10 +25,23 @@
 			note: userInput.value,
 			tag: tags.value,
 			important: importantCheck.value,
+			bg: bgStyle,
 		});
 		userInput.value = '';
 		importantCheck.value = false;
 	}
+
+	const bgStyle = computed(() => {
+		if (tags.value == 'Work') {
+			return '#ff595e';
+		} else if (tags.value == 'Misc') {
+			return '#ffca3a';
+		} else if (tags.value == 'School') {
+			return '#8ac926';
+		} else {
+			return 'white';
+		}
+	});
 
 	function doIt() {
 		localStorage.setItem('1', JSON.stringify(userData));
@@ -126,16 +141,19 @@
 		<div class="list--item__container">
 			<div
 				class="card__container"
-				v-for="(item, index) in userData"
-				:key="index.id"
+				v-for="item in userData"
+				:key="item.id"
+				:style="{ 'background-color': item.bg }"
 			>
 				<div class="card--item__tag">
 					<h1>{{ item.tag }}</h1>
 				</div>
 
-				<p :class="{ bold: item.important }">{{ item.note }}</p>
+				<div>
+					<p :class="{ bold: item.important }">{{ item.note }}</p>
+				</div>
 
-				<p>{{ index }}</p>
+				<p>{{ item.bg }}</p>
 				<button class="btn card__btn" @click="deleteSelf(index)">
 					Delete <font-awesome-icon icon="fa-solid fa-trash" />
 				</button>

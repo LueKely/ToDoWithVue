@@ -1,11 +1,17 @@
 .card__container {
+	display: flex;
+	flex-direction: column;
 	border: solid black 4px;
 	padding: 10px;
 	height: 280px;
 	width: 280px;
-	background-color: coral;
+
 	word-wrap: break-word;
 	margin: 5px;
+}
+
+.work {
+	background-color: aqua;
 }
 
 #ShowUi {
@@ -118,6 +124,10 @@
 }
 
 .btn.card__btn {
+	margin-top: auto;
+	margin-left: auto;
+
+	height: 40px;
 	width: 100px;
 	background-color: #ff2e2e;
 	color: #ffff;
