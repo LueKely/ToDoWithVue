@@ -11,6 +11,7 @@
 	const userInput = ref('');
 	const tags = ref('');
 	const isUi = ref(false);
+	const noteBg = ref('');
 	const showChar = computed(() => {
 		return userInput.value.length;
 	});
@@ -21,27 +22,27 @@
 	});
 
 	function submitForm() {
+		AddColor();
 		userData.push({
 			note: userInput.value,
 			tag: tags.value,
 			important: importantCheck.value,
-			bg: bgStyle,
+			bg: noteBg.value,
 		});
 		userInput.value = '';
 		importantCheck.value = false;
 	}
-
-	const bgStyle = computed(() => {
+	function AddColor() {
 		if (tags.value == 'Work') {
-			return '#ff595e';
+			noteBg.value = '#ff595e';
 		} else if (tags.value == 'Misc') {
-			return '#ffca3a';
+			noteBg.value = '#ffca3a';
 		} else if (tags.value == 'School') {
-			return '#8ac926';
+			noteBg.value = '#8ac926';
 		} else {
-			return 'white';
+			noteBg.value = 'white';
 		}
-	});
+	}
 
 	function doIt() {
 		localStorage.setItem('1', JSON.stringify(userData));
