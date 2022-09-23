@@ -293,5 +293,7 @@ option {
 }
 .overLine {
 	text-decoration: line-through;
-	text-decoration-thickness: 0.2rem;
+	text-decoration-thickness: 0.15rem;
+	-moz-text-text-decoration: line-through;
+	-moz-text-decoration-thickness: 0.15rem;
 }
