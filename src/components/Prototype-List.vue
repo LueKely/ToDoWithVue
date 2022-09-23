@@ -2,27 +2,35 @@
 	import { ref, reactive, watch, computed } from 'vue';
 
 	const parsedData = localStorage.getItem('1');
+	const editUserItem = ref('');
+	const isEditOpen = ref(false);
 
 	const userData = reactive(
 		localStorage.length == 0 ? [] : JSON.parse(parsedData)
 	);
-
 	const importantCheck = ref(false);
 	const userInput = ref('');
 	const tags = ref('');
 	const isUi = ref(false);
 	const noteBg = ref('');
+	const editNoteBg = ref('');
+	const editCount = ref('');
+	const showEditChar = computed(() => {
+		return editUserItem.value.length;
+	});
 	const showChar = computed(() => {
 		return userInput.value.length;
 	});
 
+	// checks if userData changed
 	watch(userData, () => {
 		doIt();
 		console.log('Data Saved');
 	});
 
+	//submits users written data as an item in a array
 	function submitForm() {
-		AddColor();
+		AddColor(noteBg);
 		userData.push({
 			note: userInput.value,
 			tag: tags.value,
@@ -32,42 +40,76 @@
 		userInput.value = '';
 		importantCheck.value = false;
 	}
-	function AddColor() {
+	// adds color to the note based on the tag
+	function AddColor(item) {
 		if (tags.value == 'Work') {
-			noteBg.value = '#ff595e';
+			item.value = '#ff595e';
 		} else if (tags.value == 'Misc') {
-			noteBg.value = '#ffca3a';
+			item.value = '#ffca3a';
 		} else if (tags.value == 'School') {
-			noteBg.value = '#8ac926';
+			item.value = '#8ac926';
 		} else {
-			noteBg.value = 'white';
+			item.value = 'white';
 		}
 	}
 
+	function editForm() {
+		AddColor(editNoteBg);
+
+		userData[editCount.value] = {
+			note: editUserItem.value,
+			tag: tags.value,
+			important: importantCheck.value,
+			bg: editNoteBg.value,
+		};
+		hideEditUi();
+	}
+	function returnIndex(index) {
+		editCount.value = index;
+		editUserItem.value = userData[index].note;
+		showEditUi();
+	}
+
+	// checks if tags and user input isnt empty
 	const clearanceCheck = computed(() => {
 		return tags.value && userInput.value.length == 0;
 	});
 
+	const editClearanceCheck = computed(() => {
+		return tags.value && editUserItem.value.length == 0;
+	});
+
+	// pushes all the notes to locale storage as string
 	function doIt() {
 		localStorage.setItem('1', JSON.stringify(userData));
 		console.log(localStorage);
 	}
 
+	//clears local storage and userData
 	function clearAll() {
 		localStorage.clear();
 		userData.splice(0, userData.length);
 	}
 
+	//deletes selected item in the array
 	function deleteSelf(index) {
 		userData.splice(index, 1);
 		localStorage.setItem('1', JSON.stringify(userData));
 	}
 
+	//to show/hide ui
 	function showUi() {
 		isUi.value = true;
 	}
 	function hideUi() {
 		isUi.value = false;
+	}
+	function showEditUi() {
+		hideUi();
+		isEditOpen.value = true;
+	}
+	function hideEditUi() {
+		isEditOpen.value = false;
 	}
 
 	console.log(localStorage);
@@ -116,6 +158,7 @@
 						<option>Misc</option>
 					</select>
 				</span>
+				<!-- submission of form -->
 				<span>
 					<button
 						class="btn submit"
@@ -128,7 +171,6 @@
 					<button class="btn cancel" @click="hideUi">Cancel</button></span
 				>
 			</div>
-			<!-- submission of form -->
 		</div>
 	</div>
 
@@ -147,7 +189,7 @@
 		<div class="list--item__container">
 			<div
 				class="card__container"
-				v-for="item in userData"
+				v-for="(item, index) in userData"
 				:key="item.id"
 				:style="{ 'background-color': item.bg }"
 			>
@@ -159,15 +201,78 @@
 					<p :class="{ bold: item.important }">{{ item.note }}</p>
 				</div>
 
-				<p>{{ item.bg }}</p>
-				<button class="btn card__btn" @click="deleteSelf(index)">
-					Delete <font-awesome-icon icon="fa-solid fa-trash" />
-				</button>
+				<div class="card__btn--container">
+					<button @click="returnIndex(index)" class="btn card__btn--edit">
+						Edit <font-awesome-icon icon="fa-solid fa-wrench" />
+					</button>
+					<button class="btn card__btn" @click="deleteSelf(index)">
+						Delete <font-awesome-icon icon="fa-solid fa-trash" />
+					</button>
+				</div>
 			</div>
 		</div>
 
 		<button class="btn clearAll" @click="clearAll">Clear all</button>
 	</div>
+	<!-- test modal edit -->
+
+	<teleport to="#modal">
+		<div class="modal__container" v-show="isEditOpen">
+			<div class="container">
+				<div class="model__title"><h1>Edit</h1></div>
+
+				<div class="textArea__container">
+					<div class="textArea--limit">
+						<p class="limit">{{ showEditChar }}/200</p>
+					</div>
+					<textarea
+						placeholder="What shall you do today..."
+						id="TextBox"
+						v-model="editUserItem"
+						rows="5"
+						cols="33"
+						maxlength="200"
+					></textarea>
+				</div>
+
+				<!-- choices -->
+
+				<div class="edit__container">
+					<div class="choices__container">
+						<span class="important__container"
+							><label for="important" class="important__label"
+								>Mark As Important:</label
+							>
+							<input type="checkbox" id="important" v-model="importantCheck"
+						/></span>
+						<span>
+							<h2>Tag:</h2>
+							<select v-model="tags">
+								<option disabled value="">select tag</option>
+								<option>Work</option>
+								<option>School</option>
+								<option>Misc</option>
+							</select>
+						</span>
+						<!-- submission of form -->
+						<span>
+							<button
+								class="btn submit"
+								@click="editForm"
+								v-bind:disabled="editClearanceCheck"
+							>
+								Update
+							</button>
+
+							<button class="btn cancel" @click="hideEditUi">
+								Cancel
+							</button></span
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+	</teleport>
 </template>
 
 <style scoped src="../assets/todostyle.css"></style>
