@@ -44,6 +44,10 @@
 		}
 	}
 
+	const clearanceCheck = computed(() => {
+		return tags.value && userInput.value.length == 0;
+	});
+
 	function doIt() {
 		localStorage.setItem('1', JSON.stringify(userData));
 		console.log(localStorage);
@@ -65,6 +69,7 @@
 	function hideUi() {
 		isUi.value = false;
 	}
+
 	console.log(localStorage);
 </script>
 
@@ -114,7 +119,7 @@
 				<span>
 					<button
 						class="btn submit"
-						v-bind:disabled="userInput.length === 0"
+						v-bind:disabled="clearanceCheck"
 						@click="submitForm"
 					>
 						Submit
