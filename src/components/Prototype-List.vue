@@ -198,7 +198,10 @@
 				</div>
 
 				<div>
-					<p :class="{ bold: item.important }">{{ item.note }}</p>
+					<p v-if="item.important">
+						<mark>{{ item.note }}</mark>
+					</p>
+					<p v-else>{{ item.note }}</p>
 				</div>
 
 				<div class="card__btn--container">
