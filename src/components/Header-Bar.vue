@@ -19,6 +19,7 @@
 		border: solid 4px black;
 		border-radius: 30px;
 		background-color: var(--color-1);
+		box-shadow: 0px 12px black;
 	}
 
 	h1 {

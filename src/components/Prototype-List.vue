@@ -36,6 +36,7 @@
 			tag: tags.value,
 			important: importantCheck.value,
 			bg: noteBg.value,
+			isFinished: false,
 		});
 		userInput.value = '';
 		importantCheck.value = false;
@@ -61,6 +62,7 @@
 			tag: tags.value,
 			important: importantCheck.value,
 			bg: editNoteBg.value,
+			isFinished: userData[editCount.value].isFinished,
 		};
 		hideEditUi();
 	}
@@ -112,6 +114,10 @@
 		isEditOpen.value = false;
 	}
 
+	function toggleFinish(index) {
+		userData[index].isFinished = !userData[index].isFinished;
+	}
+
 	console.log(localStorage);
 </script>
 
@@ -134,8 +140,6 @@
 					placeholder="What shall you do today..."
 					id="TextBox"
 					v-model="userInput"
-					rows="5"
-					cols="33"
 					maxlength="200"
 				>
 				</textarea>
@@ -192,16 +196,17 @@
 				v-for="(item, index) in userData"
 				:key="item.id"
 				:style="{ 'background-color': item.bg }"
+				@click="toggleFinish(index)"
 			>
 				<div class="card--item__tag">
 					<h1>{{ item.tag }}</h1>
 				</div>
 
 				<div>
-					<p v-if="item.important">
+					<p :class="{ overLine: item.isFinished }" v-if="item.important">
 						<mark>{{ item.note }}</mark>
 					</p>
-					<p v-else>{{ item.note }}</p>
+					<p :class="{ overLine: item.isFinished }" v-else>{{ item.note }}</p>
 				</div>
 
 				<div class="card__btn--container">

@@ -1,4 +1,5 @@
 .card__container {
+	transition: scale ease-in-out 200ms;
 	display: flex;
 	flex-direction: column;
 	border: solid black 4px;
@@ -23,6 +24,7 @@
 	font-size: 1.5rem;
 	border: 4px solid black;
 	border-radius: 15px;
+	box-shadow: 0px 5px black;
 }
 
 #ShowUi:hover {
@@ -50,6 +52,9 @@
 	justify-content: center;
 }
 #TextBox {
+	overflow: hidden;
+	width: 800px;
+	height: 150px;
 	outline: none;
 	margin: 0px 10px 10px 10px;
 	display: block;
@@ -59,6 +64,8 @@
 	padding: 10px;
 	resize: none;
 	font-size: 1.5rem;
+	box-shadow: 0px 5px black;
+	-moz-box-shadow: 0px 5px black;
 }
 
 #TextBox:focus {
@@ -88,6 +95,7 @@
 	border: 4px solid black;
 	border-radius: 15px;
 	margin-inline: 5px;
+	box-shadow: 0px 2px black;
 }
 .btn.submit {
 	background-color: rgb(120, 240, 120);
@@ -112,6 +120,7 @@
 }
 
 .btn.clearAll {
+	width: 100px;
 	margin-left: 860px;
 	background-color: rgb(233, 150, 34);
 }
@@ -174,12 +183,13 @@ h2 {
 select {
 	margin-left: 10px;
 	width: 120px;
-	height: 30px;
+	height: 35px;
 	font-family: var(--Jua);
 	font-size: 1.2em;
 	background-color: var(--color-2);
 	border-radius: 10px;
 	border: 4px solid black;
+	box-shadow: 0px 3px black;
 }
 
 option {
@@ -213,6 +223,7 @@ option {
 	width: 1000px;
 	border-radius: 20px;
 	background-color: var(--color-3);
+	box-shadow: 0px 12px black;
 }
 /* list--item__container" */
 .list--item__container {
@@ -261,11 +272,12 @@ option {
 
 .modal__container > .container {
 	border: 4px solid black;
-	border-radius: 20px;
+	border-radius: 25px;
 	position: relative;
 	background-color: var(--color-1);
 	width: 800px;
 	padding-block: 20px;
+	box-shadow: 0px 10px black;
 }
 
 .edit__container {
@@ -274,7 +286,12 @@ option {
 	border: 4px solid black;
 	padding: 5px;
 	border-radius: 20px;
+	box-shadow: 0px 4px black;
 }
 .model__title {
 	font-size: 1.2rem;
+}
+.overLine {
+	text-decoration: line-through;
+	text-decoration-thickness: 0.2rem;
 }
