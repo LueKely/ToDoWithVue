@@ -17,6 +17,7 @@
 
 #ShowUi {
 	margin-top: 30px;
+	margin-bottom: 15px;
 	width: 240px;
 	height: 70px;
 	font-family: var(--Jua);
@@ -42,10 +43,7 @@
 	color: white;
 }
 .container {
-	margin: 20px;
-	width: 60vw;
-
-	margin: auto;
+	margin-inline: auto;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -167,6 +165,9 @@
 	justify-content: space-between;
 	width: 700px;
 	padding-inline: 20px;
+	margin-bottom: 5px;
+	margin-top: 15px;
+	margin-inline: auto;
 }
 .btn.card__btn:hover {
 	background-color: #b92b2b;
@@ -240,9 +241,9 @@ option {
 .list--empty__container {
 	margin: auto;
 	user-select: none;
-	width: 500px;
-	height: 500px;
-	font-size: 5rem;
+	width: 300px;
+	height: 300px;
+	font-size: 3rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
