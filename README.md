@@ -6,7 +6,7 @@ A to do list that stores your notes in the local storage. This is my first ever 
 ## Just Quick Few Heads Up
 
 - styles go weird when using mozilla fox
-- no mobile view 
+- ~~no mobile view~~ now with mobile view 
 
 ## Recommended IDE Setup
 
