@@ -36,4 +36,13 @@
 		height: 100px;
 		color: antiquewhite;
 	}
+	@media all and (max-width: 850px) {
+		.header {
+			width: 95vw;
+			height: 150px;
+		}
+		h1 {
+			font-size: 2rem;
+		}
+	}
 </style>

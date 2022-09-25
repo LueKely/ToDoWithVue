@@ -129,7 +129,7 @@
 		</button>
 
 		<!-- user input -->
-		<div v-show="isUi">
+		<div v-show="isUi" class="showUi">
 			<!-- text box -->
 
 			<div class="textArea__container">

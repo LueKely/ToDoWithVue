@@ -1,6 +1,7 @@
 <template>
 	<footer>
-		<h1>Socials</h1>
+		<div class="footer__title"><h1>Socials</h1></div>
+
 		<div class="container">
 			<a href="https://github.com/LueKely/ToDoWithVue" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-github" />
@@ -18,18 +19,21 @@
 <script></script>
 <style scoped>
 	footer {
-		margin: 50px;
 		height: 200px;
-		padding: 10px;
-		width: auto;
+
+		margin: auto;
+		margin-top: 50px;
+		width: 90vw;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
 	}
-	footer > h1 {
+	.footer__title {
+		margin-inline: auto;
 		font-family: var(--Fredoka);
-		font-size: 2.75rem;
+		font-size: 1.5rem;
+		text-align: center;
 	}
 	.container {
 		width: 300px;
@@ -37,6 +41,7 @@
 		margin-inline: auto;
 		margin-block: 10px;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
 	}
