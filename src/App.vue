@@ -1,12 +1,12 @@
 <script setup>
-	import PrototypeList from './components/Prototype-List.vue';
 	import HeaderBar from './components/Header-Bar.vue';
 	import FooterBar from './components/Footer-Bar.vue';
+	import ToDoList from './components/toDoList.vue';
 </script>
 
 <template>
 	<HeaderBar></HeaderBar>
-	<PrototypeList></PrototypeList>
+	<ToDoList></ToDoList>
 	<FooterBar></FooterBar>
 </template>
 

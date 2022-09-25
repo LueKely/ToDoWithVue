@@ -191,33 +191,35 @@
 		</div>
 		<!-- list items -->
 		<div class="list--item__container">
-			<div
-				class="card__container"
-				v-for="(item, index) in userData"
-				:key="item.id"
-				:style="{ 'background-color': item.bg }"
-				@click="toggleFinish(index)"
-			>
-				<div class="card--item__tag">
-					<h1>{{ item.tag }}</h1>
-				</div>
+			<transition-group name="list">
+				<div
+					class="card__container"
+					v-for="(item, index) in userData"
+					:key="item"
+					:style="{ 'background-color': item.bg }"
+					@click="toggleFinish(index)"
+				>
+					<div class="card--item__tag">
+						<h1>{{ item.tag }}</h1>
+					</div>
 
-				<div>
-					<p :class="{ overLine: item.isFinished }" v-if="item.important">
-						<mark>{{ item.note }}</mark>
-					</p>
-					<p :class="{ overLine: item.isFinished }" v-else>{{ item.note }}</p>
-				</div>
+					<div>
+						<p :class="{ overLine: item.isFinished }" v-if="item.important">
+							<mark>{{ item.note }}</mark>
+						</p>
+						<p :class="{ overLine: item.isFinished }" v-else>{{ item.note }}</p>
+					</div>
 
-				<div class="card__btn--container">
-					<button @click="returnIndex(index)" class="btn card__btn--edit">
-						Edit <font-awesome-icon icon="fa-solid fa-wrench" />
-					</button>
-					<button class="btn card__btn" @click="deleteSelf(index)">
-						Delete <font-awesome-icon icon="fa-solid fa-trash" />
-					</button>
+					<div class="card__btn--container">
+						<button @click="returnIndex(index)" class="btn card__btn--edit">
+							Edit <font-awesome-icon icon="fa-solid fa-wrench" />
+						</button>
+						<button class="btn card__btn" @click="deleteSelf(index)">
+							Delete <font-awesome-icon icon="fa-solid fa-trash" />
+						</button>
+					</div>
 				</div>
-			</div>
+			</transition-group>
 		</div>
 
 		<button class="btn clearAll" @click="clearAll">Clear all</button>
