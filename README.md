@@ -1,6 +1,7 @@
 # ToDoWithVue
 
-This template should help get you started developing with Vue 3 in Vite.
+A to do list that stores your notes in the local storage
+
 
 ## Recommended IDE Setup
 
