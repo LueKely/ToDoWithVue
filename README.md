@@ -1,12 +1,26 @@
-# ToDoWithVue
+## ToDoWithVue
 
 A to do list that stores your notes in the local storage. This is my first ever vue project and i am very satisfied with it. I only did the basics things you can do in vue so I haven't really touched props or emeting stuff which hopefully i will do in the next project which will be very epic.
+
+## Demo
+
+ - PC Demo:
+ 
+![alt text](https://github.com/LueKely/ToDoWithVue/blob/master/public/screenshots/Screenshot%201.png)
+![alt text](https://github.com/LueKely/ToDoWithVue/blob/master/public/screenshots/Screenshot%202.png)
+
+- Mobile View:
+
+![alt text](https://github.com/LueKely/ToDoWithVue/blob/master/public/screenshots/Mobile%20View.png)
 
 
 ## Just Quick Few Heads Up
 
 - styles go weird when using mozilla fox
 - ~~no mobile view~~ now with mobile view 
+
+
+
 
 ## Recommended IDE Setup
 
